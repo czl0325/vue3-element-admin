@@ -1,5 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import NProgress from "nprogress";
+import getPageTitle from "@/utils/get-page-title";
+import store from "@/store";
+import {ElMessage} from "element-plus";
 
 export const constantRoutes = [
   {
@@ -36,5 +40,6 @@ const router = createRouter({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
+
 
 export default router

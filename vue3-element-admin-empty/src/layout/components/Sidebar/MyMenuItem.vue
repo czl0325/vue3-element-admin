@@ -14,8 +14,8 @@ export default defineComponent({
       default: ''
     }
   },
-  render(h, context) {
-    const { icon, title } = context.props
+  render(props) {
+    const { icon, title } = props
     const vnodes = []
 
     if (icon) {

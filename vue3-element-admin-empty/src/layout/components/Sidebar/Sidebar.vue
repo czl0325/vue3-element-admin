@@ -18,6 +18,7 @@
 import {defineComponent, computed} from 'vue'
 import {useRoute} from "vue-router";
 import SidebarItem from "@/layout/components/Sidebar/SidebarItem.vue";
+import {useStore} from 'vuex'
 
 export default defineComponent({
   name: "Sidebar",
@@ -25,6 +26,12 @@ export default defineComponent({
     SidebarItem
   },
   setup() {
+    const store = useStore()
+    const get_routers = async () => {
+      const accessRoutes = await store.dispatch('permission/generateRoutes', ['admin'])
+    }
+    get_routers()
+    const permission_routes = computed(() => store.getters.permission_routes)
     const activeMenu = computed(() => {
       const route = useRoute()
       const { meta, path } = route
@@ -36,6 +43,7 @@ export default defineComponent({
       return path
     })
     return {
+      permission_routes,
       activeMenu
     }
   }
