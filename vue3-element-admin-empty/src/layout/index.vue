@@ -1,12 +1,18 @@
 <template>
-  <div>哈哈</div>
+  <div>
+    <breadcrumb />
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import Breadcrumb from '../components/Breadcrumb/index.vue'
 
 export default defineComponent({
   name: "Layout",
+  components: {
+    Breadcrumb
+  },
   setup() {
 
     return {}
