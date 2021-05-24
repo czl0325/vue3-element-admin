@@ -4,9 +4,9 @@
       <div class="main-container">
         <div>
           <nav-bar />
-<!--          <tags-view />-->
+          <tag-view />
         </div>
-<!--        <app-main />-->
+        <app-main />
 <!--        <right-panel>-->
 <!--          <settings />-->
 <!--        </right-panel>-->
@@ -18,12 +18,16 @@
 import {defineComponent} from 'vue'
 import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
 import NavBar from "@/layout/NavBar.vue";
+import AppMain from "@/layout/components/AppMain.vue";
+import TagView from "@/layout/components/TagView/TagView.vue";
 
 export default defineComponent({
   name: "Layout",
   components: {
     Sidebar,
-    NavBar
+    NavBar,
+    AppMain,
+    TagView
   },
   setup() {
 

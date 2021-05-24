@@ -1,9 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
-import NProgress from "nprogress";
-import getPageTitle from "@/utils/get-page-title";
-import store from "@/store";
-import {ElMessage} from "element-plus";
 
 export const constantRoutes = [
   {
@@ -22,10 +18,10 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
       }
     ]
   },

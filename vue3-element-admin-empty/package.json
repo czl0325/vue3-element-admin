@@ -7,11 +7,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vueuse/core": "^4.11.0",
     "axios": "^0.21.1",
     "common-resetcss": "^1.0.1",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.44",
     "js-cookie": "^2.2.1",
+    "mitt": "^2.1.0",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^0.1.7",
     "vue": "^3.0.0",
