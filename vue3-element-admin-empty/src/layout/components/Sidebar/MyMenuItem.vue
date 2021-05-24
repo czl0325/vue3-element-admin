@@ -1,9 +1,13 @@
 <script>
 import {defineComponent} from "vue";
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'MyMenuItem',
   functional: true,
+  components: {
+    SvgIcon
+  },
   props: {
     icon: {
       type: String,

@@ -1,27 +1,29 @@
 <template>
   <div class="app-wrapper">
     <sidebar class="sidebar-container" />
-<!--      <div class="main-container">-->
-<!--        <div>-->
-<!--          <navbar />-->
+      <div class="main-container">
+        <div>
+          <nav-bar />
 <!--          <tags-view />-->
-<!--        </div>-->
+        </div>
 <!--        <app-main />-->
 <!--        <right-panel>-->
 <!--          <settings />-->
 <!--        </right-panel>-->
-<!--      </div>-->
+      </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
 import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
+import NavBar from "@/layout/NavBar.vue";
 
 export default defineComponent({
   name: "Layout",
   components: {
-    Sidebar
+    Sidebar,
+    NavBar
   },
   setup() {
 

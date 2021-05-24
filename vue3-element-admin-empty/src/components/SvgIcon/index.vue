@@ -1,5 +1,5 @@
 <template>
-  <div v-if="external" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$listeners" />
+  <div v-if="external" :style="styleExternalIcon" class="svg-external-icon svg-icon"/>
   <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
     <use :xlink:href="iconName" />
   </svg>
@@ -21,20 +21,20 @@ export default defineComponent({
       default: ''
     }
   },
-  setup() {
-    const external = computed(()=>isExternal(this.iconClass))
-    const iconName = computed(()=>{return `#icon-${this.iconClass}`})
+  setup(props) {
+    const external = computed(()=>isExternal(props.iconClass))
+    const iconName = computed(()=>{return `#icon-${props.iconClass}`})
     const svgClass = computed(()=>{
-      if (this.className) {
-        return 'svg-icon ' + this.className
+      if (props.className) {
+        return 'svg-icon ' + props.className
       } else {
         return 'svg-icon'
       }
     })
     const styleExternalIcon = computed(()=> {
       return {
-        mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`
+        mask: `url(${props.iconClass}) no-repeat 50% 50%`,
+        '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`
       }
     })
     return {
