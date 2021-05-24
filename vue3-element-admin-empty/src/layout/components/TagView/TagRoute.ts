@@ -5,9 +5,9 @@ interface RouteModel {
 
 // 固定首页路由
 export const homeRoute: RouteModel = {
-  path: "/welcome",
+  path: "/",
   meta: {
-    title: "message.hshome",
+    title: "首页",
     icon: "el-icon-s-home",
     showLink: true,
     savedPosition: false,
