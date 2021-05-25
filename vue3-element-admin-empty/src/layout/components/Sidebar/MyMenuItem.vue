@@ -21,7 +21,6 @@ export default defineComponent({
   render(props) {
     const { icon, title } = props
     const vnodes = []
-
     if (icon) {
       if (icon.includes('el-icon')) {
         vnodes.push(<i class={[icon]} />)
