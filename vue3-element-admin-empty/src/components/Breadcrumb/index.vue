@@ -12,8 +12,7 @@
 <script lang="ts">
 import {defineComponent, ref, watch} from 'vue'
 import {useRouter, useRoute} from "vue-router";
-// @ts-ignore
-import pathToRegexp from 'path-to-regexp'
+import qs from 'qs'
 
 export default defineComponent({
   name: "Breadcrumb",
@@ -40,21 +39,20 @@ export default defineComponent({
       }
       return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
     }
-    const pathCompile = (path:any) => {
-      const { params } = route
-      let toPath = pathToRegexp.compile(path)
-      return toPath(params)
-    }
-
     const handleLink = (item:any) => {
-      const { redirect, path } = item
+      const { redirect } = item
       if (redirect) {
         router.push(redirect)
         return
       }
-      router.push(pathCompile(path))
+      let path = item.path
+      const { params } = route
+      if (params) {
+        path += `?${qs.stringify(params)}`
+      }
+      router.push(path)
     }
-    watch(()=>route, (val)=> {
+    watch(route, (val)=> {
       if (val.path.startsWith('/redirect/')) {
         return
       }

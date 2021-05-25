@@ -46,7 +46,7 @@ export default defineComponent({
         return acc
       }, {})
     }
-    watch(()=>route, (val)=> {
+    watch(route, (val)=> {
       const query = val.query
       if (query) {
         redirect.value = query.redirect as string
