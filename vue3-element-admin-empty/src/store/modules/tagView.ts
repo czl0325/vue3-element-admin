@@ -9,12 +9,19 @@ const mutations:MutationTree<any> = {
   ADD_VISITED_VIEW: (state, view) => {
     if (state.visitedViews.some((v:any) => v.path === view.path))
       return
-    state.visitedViews.push(
-      Object.assign({}, view, {
-        title: view.meta.title || '-----'
-      })
-    )
-    console.log(state.visitedViews)
+    if (view.name === "Dashboard") {
+      state.visitedViews.unshift(
+        Object.assign({}, view, {
+          title: view.meta.title || '-----'
+        })
+      )
+    } else {
+      state.visitedViews.push(
+        Object.assign({}, view, {
+          title: view.meta.title || '-----'
+        })
+      )
+    }
   },
   ADD_CACHED_VIEW: (state, view) => {
     if (state.cachedViews.includes(view.name))

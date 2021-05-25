@@ -27,7 +27,7 @@ export default defineComponent({
       const first = matched[0]
       if (!isDashboard(first)) {
         // @ts-ignore
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+        matched = [{ path: '/dashboard', meta: { title: '首页' }}].concat(matched)
       }
       // @ts-ignore
       levelList.value = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)

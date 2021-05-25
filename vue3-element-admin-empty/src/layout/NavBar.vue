@@ -10,9 +10,6 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/profile/index">
-              <el-dropdown-item>资料</el-dropdown-item>
-            </router-link>
             <router-link to="/">
               <el-dropdown-item>首页</el-dropdown-item>
             </router-link>
