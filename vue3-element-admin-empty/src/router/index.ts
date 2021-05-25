@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import Login from '@/views/login/Login.vue'
 import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
-import store from '@/store/index.js'
+import store from '@/store/index.ts'
 
 export const constantRoutes = [
   {
@@ -14,6 +15,10 @@ export const constantRoutes = [
         path: '/redirect/:path(.*)'
       }
     ]
+  },
+  {
+    path: '/login',
+    component: Login
   },
   {
     path: '/',
@@ -70,7 +75,6 @@ router.beforeEach(async (to, from, next) => {
   const hasToken = getToken()
   if (hasToken) {
     if (to.path === '/login') {
-      // if is logged in, redirect to the home page
       next({ path: '/' })
     } else {
       // determine whether the user has obtained his permission roles through getInfo
@@ -79,13 +83,13 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         try {
+          debugger
           const { roles } = await store.dispatch('user/getInfo')
-
-          // generate accessible routes map based on roles
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
           accessRoutes.forEach((route:any) => {
             router.addRoute(route)
           })
+          console.log(router)
           next({ ...to, replace: true })
         } catch (error) {
           // remove token and go to login page to re-login
