@@ -77,7 +77,6 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      // determine whether the user has obtained his permission roles through getInfo
       const hasRoles = store.getters.roles && store.getters.roles.length > 0
       if (hasRoles) {
         next()
@@ -88,7 +87,6 @@ router.beforeEach(async (to, from, next) => {
           accessRoutes.forEach((route:any) => {
             router.addRoute(route)
           })
-          console.log(router)
           next({ ...to, replace: true })
         } catch (error) {
           // remove token and go to login page to re-login

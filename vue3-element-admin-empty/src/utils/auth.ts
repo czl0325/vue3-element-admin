@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'Admin-Token'
+const TokenKey = 'VUE3ADMIN'
 
 export const getToken = () => {
   return Cookies.get(TokenKey)

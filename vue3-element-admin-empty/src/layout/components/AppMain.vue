@@ -11,13 +11,21 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, computed} from 'vue'
+import {useStore} from "vuex";
+import {useRoute} from "vue-router";
 
 export default defineComponent({
   name: "AppMain",
   setup() {
-
-    return {}
+    const store = useStore()
+    const route = useRoute()
+    const cachedViews = computed(() => store.getters.cachedViews)
+    const key = computed(() => route.path)
+    return {
+      key,
+      cachedViews
+    }
   }
 })
 </script>

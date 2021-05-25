@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import getters from "@/store/getters.ts";
+import VueXAlong from 'vuex-along';
 
 const modulesFiles = require.context('./modules', true, /\.(js|ts)$/)
 const modules = modulesFiles.keys().reduce((modules, modulePath) => {
@@ -11,7 +12,13 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   }
   return modules
 }, {})
+console.log(modules)
 export default createStore({
   modules,
-  getters
+  getters,
+  // plugins: [VueXAlong({
+  //   name: 'Vue3Admin',
+  //   local: { list: ['user', 'tagView', 'permission', 'settings'], isFilter: true },
+  //   session: { list: [] }
+  // })]
 })
